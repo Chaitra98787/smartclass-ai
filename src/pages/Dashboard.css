@@ -1,138 +1,139 @@
-/* Page Layout */
-.dashboard{
-  display:flex;
-  min-height:100vh;
-  font-family: Arial, sans-serif;
-  background:#F4F1EE;
+.dashboard {
+  display: flex;
+  height: 100vh;
+  background: #F5F7FA;
+  font-family: Arial;
 }
 
-/* Sidebar */
-.sidebar{
-  width:220px;
-  background:#2A9D8F;
-  color:white;
-  padding:30px 20px;
-}
-
-.sidebar h2{
-  margin-bottom:40px;
-}
-
-.sidebar ul{
-  list-style:none;
-  padding:0;
-}
-
-.sidebar li{
-  margin:18px 0;
-  cursor:pointer;
-  font-size:16px;
-}
-
-.sidebar li:hover{
-  color:#E76F51;
-}
-
-/* Main Content */
-.main-content{
-  flex:1;
-  padding:40px;
-}
-
-/* Title */
-.main-content h1{
-  margin-bottom:30px;
-}
-
-/* Cards Layout */
-.card-container{
-  display:flex;
-  gap:30px;
-  flex-wrap:wrap;
-}
-
-/* Cards */
-.dashboard-card{
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  width:300px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08);
-  transition:0.3s;
-}
-
-.dashboard-card:hover{
-  transform:translateY(-5px);
-}
-
-/* Upload Button */
-.upload-btn{
-  margin-top:15px;
-  padding:10px 18px;
-  border:none;
-  border-radius:6px;
-  background:#E76F51;
-  color:white;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.upload-btn:hover{
-  background:#d65c40;
-}
-
-/* Quiz Section */
-.quiz-section{
-  margin-top:50px;
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.quiz-question{
-  margin-bottom:25px;
-}
-
-.dashboard-card {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 20px;
-
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-
-  transition: 0.3s;
-}
-
-.dashboard-card:hover {
-  transform: translateY(-5px);
-}
-
-.upload-btn {
-  margin-top: 10px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 8px;
-
-  background: #E76F51;
+/* SIDEBAR */
+.sidebar {
+  width: 230px;
+  background: #14213D;
   color: white;
-  font-weight: bold;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #FCA311;
+  margin-bottom: 20px;
+}
+
+.sidebar li {
+  margin: 15px 0;
   cursor: pointer;
 }
 
-.upload-btn:hover {
-  background: #d65a3f;
+.sidebar .active {
+  color: #FCA311;
+  font-weight: bold;
 }
 
-/* Quiz UI */
-.quiz-section {
-  margin-top: 30px;
+.create-box {
+  margin-top: 40px;
+  background: #ffffff10;
+  padding: 15px;
+  border-radius: 10px;
 }
 
-.quiz-card {
+.create-box button {
+  margin-top: 10px;
+  background: #FCA311;
+  border: none;
+  padding: 8px 12px;
+  color: #14213D;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* MAIN */
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+.banner {
+  background: #14213D;
+  color: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* CONTENT */
+.content {
+  display: flex;
+  gap: 20px;
+}
+
+.left {
+  flex: 2;
+}
+
+.right-panel {
+  width: 260px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* CARDS */
+.card {
   background: white;
   padding: 15px;
-  margin-top: 15px;
   border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.bottom-cards {
+  display: flex;
+  gap: 20px;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.active-status {
+  color: green;
+}
+
+.completed {
+  color: orange;
+}
+
+/* CALENDAR */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.calendar span {
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.active-date {
+  background: #FCA311;
+  color: #14213D;
+  border-radius: 5px;
+}
+
+/* SCHEDULE */
+.clickable {
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.clickable:hover {
+  color: #FCA311;
+}
+
+/* PROFILE */
+.profile {
+  margin-bottom: 20px;
 }
