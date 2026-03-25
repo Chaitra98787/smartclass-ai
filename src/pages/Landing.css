@@ -1,0 +1,65 @@
+.landing{
+height:100vh;
+font-family:Poppins, sans-serif;
+background:linear-gradient(135deg,#2A9D8F,#1f7f76);
+color:white;
+}
+
+/* Navbar */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+padding:20px 60px;
+align-items:center;
+}
+
+.navbar a{
+margin-left:20px;
+text-decoration:none;
+color:white;
+font-weight:500;
+}
+
+/* Hero */
+
+.hero{
+text-align:center;
+margin-top:150px;
+padding:0 20px;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+.hero p{
+margin-top:20px;
+font-size:18px;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+}
+
+.hero-buttons{
+margin-top:40px;
+}
+
+.login-btn{
+padding:12px 28px;
+border:none;
+background:white;
+color:#2A9D8F;
+border-radius:6px;
+margin-right:10px;
+cursor:pointer;
+}
+
+.signup-btn{
+padding:12px 28px;
+border:none;
+background:#E76F51;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}

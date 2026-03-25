@@ -1,0 +1,48 @@
+.app-layout{
+display:flex;
+height:100vh;
+font-family:Poppins, sans-serif;
+background:#F8FAFC;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:230px;
+background:#0F172A;
+color:white;
+padding:30px;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+margin-bottom:40px;
+}
+
+.sidebar nav{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
+
+.sidebar a{
+text-decoration:none;
+color:#cbd5f5;
+padding:10px;
+border-radius:8px;
+transition:0.3s;
+}
+
+.sidebar a:hover{
+background:#1E293B;
+color:white;
+}
+
+/* MAIN AREA */
+
+.main-content{
+flex:1;
+padding:40px;
+overflow:auto;
+}
