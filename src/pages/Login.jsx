@@ -19,7 +19,7 @@ function Login() {
     <div className="login-page">
       <div className="login-container">
 
-        <h1>EduGen AI</h1>
+        <h1>CLYDE</h1>
         <h2>Login</h2>
 
         <input type="email" placeholder="Email" />

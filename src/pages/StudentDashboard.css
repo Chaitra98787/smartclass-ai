@@ -1,0 +1,128 @@
+.student-dashboard {
+  display: flex;
+  height: 100vh;
+  font-family: Arial;
+}
+
+/* SIDEBAR */
+.student-sidebar {
+  width: 220px;
+  background: #14213D; /* ✅ NEW COLOR */
+  color: white;
+  padding: 20px;
+}
+
+.student-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.student-sidebar li {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.student-sidebar .active {
+  background: #FCA311; /* 🔥 highlight */
+  border-radius: 8px;
+  color: black;
+}
+
+/* MAIN */
+.student-main {
+  flex: 1;
+  padding: 30px;
+  background: #f5f6fa;
+}
+
+/* PROFILE */
+.profile-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.goal-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #FCA311;
+  border: none;
+  border-radius: 6px;
+}
+
+/* ASSIGNMENTS */
+.assignments {
+  margin-top: 20px;
+}
+
+.assignment-list {
+  display: flex;
+  gap: 20px;
+}
+
+.assignment {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  width: 180px;
+}
+
+/* LESSONS */
+.lessons {
+  margin-top: 20px;
+}
+
+.lesson-cards {
+  display: flex;
+  gap: 20px;
+}
+
+.lesson {
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  width: 200px;
+}
+
+.yellow {
+  background: #FCA311;
+}
+
+.red {
+  background: #e63946;
+}
+
+/* RIGHT PANEL */
+.student-right {
+  width: 260px;
+  padding: 20px;
+  background: #fafafa;
+}
+
+/* CALENDAR */
+.calendar-box {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.calendar span {
+  text-align: center;
+  padding: 6px;
+}
+
+/* TASKS */
+.tasks {
+  margin-top: 20px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+}

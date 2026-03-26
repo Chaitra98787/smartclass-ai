@@ -7,6 +7,7 @@ import ClassNotes from "./pages/ClassNotes";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import QuizGenerator from "./pages/QuizGenerator";
+import StudentDashboard from "./pages/StudentDashboard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
       {/* Dashboard */}
       <Route path="/teacher-dashboard" element={<Dashboard />} />
+      <Route path="/student-dashboard" element={<StudentDashboard />} />
 
       {/* Features */}
       <Route path="/upload-notes" element={<UploadNotes />} />

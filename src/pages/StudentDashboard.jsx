@@ -1,82 +1,97 @@
-import { useState, useEffect } from "react";
-import "./Dashboard.css";
+import "./StudentDashboard.css";
 
 function StudentDashboard() {
-
-  const [quiz, setQuiz] = useState([]);
-  const [answers, setAnswers] = useState({});
-  const [score, setScore] = useState(null);
-
-  // ✅ LOAD quiz from localStorage
-  useEffect(() => {
-    const storedQuiz = JSON.parse(localStorage.getItem("quiz"));
-    if (storedQuiz) {
-      setQuiz(storedQuiz);
-    }
-  }, []);
-
-  const handleOptionChange = (qIndex, option) => {
-    setAnswers({
-      ...answers,
-      [qIndex]: option,
-    });
-  };
-
-  const handleSubmit = () => {
-    let total = 0;
-
-    quiz.forEach((q, i) => {
-      if (answers[i] === q.answer) {
-        total++;
-      }
-    });
-
-    setScore(total);
-  };
-
   return (
-    <div className="dashboard">
+    <div className="student-dashboard">
 
-      <div className="main-content">
+      {/* SIDEBAR */}
+      <div className="student-sidebar">
+        <h2>CLYDE</h2>
 
-        <h1>Student Dashboard</h1>
+        <ul>
+          <li className="active">Home</li>
+          <li>My Results</li>
+          <li>Submissions</li>
+          <li>Take Quiz</li> {/* ✅ ADDED */}
+          <li>Settings</li>
+        </ul>
+      </div>
 
-        <div className="dashboard-card">
+      {/* MAIN */}
+      <div className="student-main">
 
-          <h3>Take Quiz</h3>
+        {/* PROFILE */}
+        <div className="profile-box">
+          <h2>Your Profile</h2>
+          <p>Hi Student, keep learning and improving 🚀</p>
+          <button className="goal-btn">Set Goals</button>
+        </div>
 
-          {quiz.length === 0 ? (
-            <p>No quiz available</p>
-          ) : (
-            quiz.map((q, i) => (
-              <div key={i}>
-                <p><strong>{q.question}</strong></p>
+        {/* ASSIGNMENTS */}
+        <div className="assignments">
+          <h3>Your Assignments</h3>
 
-                {q.options.map((opt, idx) => (
-                  <div key={idx}>
-                    <input
-                      type="radio"
-                      name={`q${i}`}
-                      value={opt}
-                      onChange={() => handleOptionChange(i, opt)}
-                    />
-                    {opt}
-                  </div>
-                ))}
+          <div className="assignment-list">
+            <div className="assignment">
+              <h4>English Lesson</h4>
+              <p>Progress: 35%</p>
+            </div>
 
-                <br />
-              </div>
-            ))
-          )}
+            <div className="assignment">
+              <h4>Mathematics</h4>
+              <p>Progress: 80%</p>
+            </div>
 
-          {quiz.length > 0 && (
-            <button onClick={handleSubmit}>Submit</button>
-          )}
+            <div className="assignment">
+              <h4>History</h4>
+              <p>Progress: 60%</p>
+            </div>
+          </div>
+        </div>
 
-          {score !== null && (
-            <h3>Your Score: {score} / {quiz.length}</h3>
-          )}
+        {/* LESSONS */}
+        <div className="lessons">
+          <h3>Lessons for you</h3>
 
+          <div className="lesson-cards">
+            <div className="lesson yellow">
+              <h4>Focus Words</h4>
+              <p>English</p>
+            </div>
+
+            <div className="lesson red">
+              <h4>Workshops</h4>
+              <p>Extra-Curricular</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* RIGHT PANEL */}
+      <div className="student-right">
+
+        {/* CALENDAR */}
+        <div className="calendar-box">
+          <h4>March 2026</h4>
+
+          <div className="calendar">
+            {[...Array(31)].map((_, i) => (
+              <span key={i}>{i + 1}</span>
+            ))}
+          </div>
+        </div>
+
+        {/* TASKS */}
+        <div className="tasks">
+          <h4>Your Tasks</h4>
+
+          <ul>
+            <li>📤 Upload Assignment</li>
+            <li>📖 Study for Quiz</li>
+            <li>✍️ Practice Writing</li>
+            <li>🔤 Spell Check</li>
+          </ul>
         </div>
 
       </div>
