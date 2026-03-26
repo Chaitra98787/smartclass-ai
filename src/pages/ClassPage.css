@@ -1,0 +1,44 @@
+.class-page {
+  padding: 30px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.upload-box {
+  border: 2px dashed #6366f1;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+.upload-box:hover {
+  background: #f0f4ff;
+}
+
+.selected-file {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.files {
+  margin-top: 20px;
+}
+
+.file-item {
+  background: #f1f5f9;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+}

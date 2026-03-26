@@ -1,152 +1,136 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
+import { useState } from "react";
 
 function Dashboard() {
-  const navigate = useNavigate();
-
   const today = new Date();
-  const currentDate = today.getDate();
+  const [currentDate, setCurrentDate] = useState(today.getDate());
 
-  const [selectedDate, setSelectedDate] = useState(currentDate);
-
-  const daysInMonth = new Date(2026, 2, 0).getDate();
-
-  // Sample class data
-  const classes = {
-    9: ["Class 6th - 10AM", "Class 7th - 3PM"],
-    10: ["Class 5th - 11AM"],
-    11: ["Class 8th - 2PM"],
-  };
+  const daysInMonth = new Date(
+    today.getFullYear(),
+    today.getMonth() + 1,
+    0
+  ).getDate();
 
   return (
     <div className="dashboard">
 
       {/* SIDEBAR */}
       <div className="sidebar">
-        <h2>SmartClass</h2>
+        <h2>CLYDE</h2>
 
         <ul>
           <li className="active">Dashboard</li>
-          <li>Classes</li>
+          <li>Courses</li>
           <li>Students</li>
-          <li>Tests</li>
-          <li>Analytics</li>
+          <li>Materials</li>
+          <li>Chat</li>
         </ul>
-
-        <div className="create-box">
-          <p>Create instant live class</p>
-          <button>Create Class</button>
-        </div>
       </div>
 
       {/* MAIN */}
       <div className="main">
 
-        <h2>Good Morning, Teacher 👋</h2>
-
-        <div className="banner">
-          Your students are doing great 🎉 60% completed tests
+        {/* HEADER */}
+        <div className="topbar">
+          <h2>Dashboard</h2>
+          <div className="profile">Tina Walker</div>
         </div>
 
+        {/* STATS */}
+        <div className="stats">
+          <div className="card">
+            <h3>55</h3>
+            <p>Total students</p>
+          </div>
+
+          <div className="card">
+            <h3>40h</h3>
+            <p>Productivity</p>
+          </div>
+
+          <div className="card">
+            <h3>4/10</h3>
+            <p>Completed courses</p>
+          </div>
+        </div>
+
+        {/* CONTENT */}
         <div className="content">
 
           {/* LEFT */}
           <div className="left">
 
-            <div className="card">
-              <h3>Submitted Tests</h3>
+            <h3>Pending Homework</h3>
 
-              <table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
+            <div className="homework">
 
-                <tbody>
-                  <tr>
-                    <td>John</td>
-                    <td>Today</td>
-                    <td className="active-status">Active</td>
-                  </tr>
-
-                  <tr>
-                    <td>Emma</td>
-                    <td>Yesterday</td>
-                    <td className="completed">Completed</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div className="bottom-cards">
-
-              <div className="card">
-                <h3>Top Students</h3>
-                <p>Lucas - 90%</p>
-                <p>Roy - 85%</p>
-                <p>Sophie - 84%</p>
+              <div className="row">
+                <span>Alex Johnson</span>
+                <span>8th Grade</span>
+                <span>Algebra</span>
+                <span>92%</span>
+                <button className="btn green">Test</button>
               </div>
 
-              <div className="card">
-                <h3>Groups</h3>
-                <p>Class 5th</p>
-                <p>Class 6th</p>
+              <div className="row">
+                <span>Monika Doki</span>
+                <span>5th Grade</span>
+                <span>Geometry</span>
+                <span>75%</span>
+                <button className="btn purple">Quiz</button>
+              </div>
+
+              <div className="row">
+                <span>Olivia Williams</span>
+                <span>6th Grade</span>
+                <span>Algebra</span>
+                <span>65%</span>
+                <button className="btn purple">Quiz</button>
+              </div>
+
+              <div className="row">
+                <span>James Davis</span>
+                <span>9th Grade</span>
+                <span>Pre-Algebra</span>
+                <span>83%</span>
+                <button className="btn blue">Project</button>
               </div>
 
             </div>
 
           </div>
 
-          {/* RIGHT PANEL */}
-          <div className="right-panel">
+          {/* RIGHT CALENDAR */}
+          <div className="right">
 
-            <div className="profile">
-              <h3>Monica</h3>
-              <p>Math Teacher</p>
-            </div>
+            <h3>Schedule</h3>
 
-            {/* CALENDAR */}
-            <div className="calendar-box">
-              <h4>March 2026</h4>
+            <h4 className="month">
+              {today.toLocaleString("default", { month: "long" })} {today.getFullYear()}
+            </h4>
 
-              <div className="calendar">
-                {[...Array(daysInMonth)].map((_, i) => {
-                  const day = i + 1;
+            <div className="calendar">
 
-                  return (
-                    <span
-                      key={day}
-                      className={day === selectedDate ? "active-date" : ""}
-                      onClick={() => setSelectedDate(day)}
-                    >
-                      {day}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
+              {/* DAYS */}
+              {["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map((d) => (
+                <span className="day-name" key={d}>{d}</span>
+              ))}
 
-            {/* SCHEDULE */}
-            <div className="schedule">
-              <h4>Schedule</h4>
+              {/* DATES */}
+              {[...Array(daysInMonth)].map((_, i) => {
+                const day = i + 1;
 
-              {classes[selectedDate] ? (
-                classes[selectedDate].map((cls, i) => (
-                  <p
-                    key={i}
-                    className="clickable"
-                    onClick={() => navigate("/attendance")}
+                return (
+                  <span
+                    key={day}
+                    className={day === currentDate ? "active-day" : ""}
+                    onClick={() => setCurrentDate(day)}
                   >
-                    {cls}
-                  </p>
-                ))
-              ) : (
-                <p>No classes</p>
-              )}
+                    {day}
+                  </span>
+                );
+              })}
+
             </div>
 
           </div>
@@ -154,7 +138,6 @@ function Dashboard() {
         </div>
 
       </div>
-
     </div>
   );
 }

@@ -1,0 +1,45 @@
+.upload-page {
+  text-align: center;
+  padding: 40px;
+}
+
+/* TITLE */
+.upload-page h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+/* CARD CONTAINER */
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* 🔥 YELLOW CARDS */
+.class-card {
+  background: #FCA311; /* ✅ YELLOW */
+
+  width: 220px;
+  height: 130px;
+
+  border-radius: 15px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: #14213D; /* 🔥 DARK TEXT FOR CONTRAST */
+
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.class-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}

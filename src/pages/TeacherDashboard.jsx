@@ -1,15 +1,17 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-<div className="sidebar">
+function TeacherDashboard() {
+  const navigate = useNavigate();
 
-  <h2>SmartClass</h2>
+  return (
+    <div>
+      <h1>Teacher Dashboard 👩‍🏫</h1>
 
-  <ul>
-    <li><Link to="/teacher-dashboard">Dashboard</Link></li>
-    <li><Link to="/upload-notes">Upload Notes</Link></li>
-    <li><Link to="/generate-quiz">AI Quiz Generator</Link></li>
-    <li><Link to="/student-analytics">Analytics</Link></li>
-    <li>Logout</li>
-  </ul>
+      <button onClick={() => navigate("/upload-notes")}>
+        Upload Notes
+      </button>
+    </div>
+  );
+}
 
-</div>
+export default TeacherDashboard;
