@@ -1,114 +1,106 @@
 .dashboard {
   display: flex;
   height: 100vh;
-  background: #f5f6fa;
+  background: #F5F7FA;
   font-family: Arial;
 }
 
 /* SIDEBAR */
 .sidebar {
-  width: 220px;
-  background: white;
+  width: 230px;
+  background: #14213D;
+  color: white;
   padding: 20px;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
+.sidebar h2 {
+  color: #FCA311;
+  margin-bottom: 20px;
 }
 
 .sidebar li {
-  padding: 12px;
+  margin: 15px 0;
   cursor: pointer;
-  color: #555;
 }
 
 .sidebar .active {
-  background: #7b61ff;
-  color: white;
-  border-radius: 8px;
+  color: #FCA311;
+  font-weight: bold;
+}
+
+.create-box {
+  margin-top: 40px;
+  background: #ffffff10;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.create-box button {
+  margin-top: 10px;
+  background: #FCA311;
+  border: none;
+  padding: 8px 12px;
+  color: #14213D;
+  font-weight: bold;
+  border-radius: 6px;
 }
 
 /* MAIN */
 .main {
   flex: 1;
-  padding: 25px;
-  overflow-x: hidden; /* 🔥 prevents overflow */
+  padding: 20px;
 }
 
-/* TOPBAR */
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-/* STATS */
-.stats {
-  display: flex;
-  gap: 15px;
-}
-
-.card {
-  background: white;
+.banner {
+  background: #14213D;
+  color: white;
   padding: 15px;
   border-radius: 10px;
-  width: 140px;
-  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* CONTENT */
 .content {
   display: flex;
   gap: 20px;
-  margin-top: 30px;
-  align-items: flex-start;
 }
 
-/* LEFT */
 .left {
   flex: 2;
 }
 
-.homework {
+.right-panel {
+  width: 260px;
   background: white;
-  padding: 15px;
+  padding: 20px;
   border-radius: 10px;
 }
 
-.row {
+/* CARDS */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.bottom-cards {
   display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  gap: 20px;
 }
 
-/* BUTTONS */
-.btn {
-  padding: 5px 10px;
-  border-radius: 6px;
-  border: none;
-  color: white;
-}
-
-.green { background: #4CAF50; }
-.purple { background: #7b61ff; }
-.blue { background: #2196F3; }
-
-/* RIGHT PANEL */
-.right {
-  width: 220px; /* 🔥 FIXED WIDTH */
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  flex-shrink: 0;
-}
-
-/* MONTH */
-.month {
+/* TABLE */
+table {
+  width: 100%;
   margin-top: 10px;
-  font-size: 14px;
-  color: #555;
+}
+
+.active-status {
+  color: green;
+}
+
+.completed {
+  color: orange;
 }
 
 /* CALENDAR */
@@ -119,23 +111,29 @@
   margin-top: 10px;
 }
 
-.day-name {
-  font-size: 11px;
-  color: #888;
-  text-align: center;
-}
-
 .calendar span {
-  padding: 7px;
+  padding: 8px;
   text-align: center;
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 12px;
 }
 
-/* ACTIVE DAY */
-.active-day {
-  background: #7b61ff;
-  color: white;
-  font-weight: bold;
+.active-date {
+  background: #FCA311;
+  color: #14213D;
+  border-radius: 5px;
+}
+
+/* SCHEDULE */
+.clickable {
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+.clickable:hover {
+  color: #FCA311;
+}
+
+/* PROFILE */
+.profile {
+  margin-bottom: 20px;
 }
