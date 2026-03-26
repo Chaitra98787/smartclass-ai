@@ -1,70 +1,39 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Login() {
-
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("student");
+  const [role, setRole] = useState("Student");
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    if (role === "teacher") {
-      navigate("/teacher-dashboard");
+  const handleLogin = () => {
+    if (role === "Teacher") {
+      navigate("/teacher-dashboard"); // ✅ GO TO TEACHER DASHBOARD
     } else {
-      navigate("/student-dashboard");
+      navigate("/student-dashboard"); // (optional)
     }
   };
 
   return (
-
     <div className="login-page">
+      <div className="login-container">
 
-      <div className="login-left">
+        <h1>EduGen AI</h1>
+        <h2>Login</h2>
 
-        <h2>CLYDE</h2>
-        <h3>Login</h3>
+        <input type="email" placeholder="Email" />
+        <input type="password" placeholder="Password" />
 
-        <form onSubmit={handleLogin}>
+        <select onChange={(e) => setRole(e.target.value)}>
+          <option>Student</option>
+          <option>Teacher</option>
+        </select>
 
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            required
-          />
-
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-            required
-          />
-
-          <select
-            value={role}
-            onChange={(e)=>setRole(e.target.value)}
-          >
-            <option value="student">Student</option>
-            <option value="teacher">Teacher</option>
-          </select>
-
-          <button type="submit">Login</button>
-
-        </form>
-
-        <p className="signup-text">
-          Don't have an account? <Link to="/signup">Sign up</Link>
-        </p>
+        {/* ✅ FIXED BUTTON */}
+        <button onClick={handleLogin}>Login</button>
 
       </div>
-
     </div>
   );
 }

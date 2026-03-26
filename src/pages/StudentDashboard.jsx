@@ -1,42 +1,81 @@
+import { useState, useEffect } from "react";
 import "./Dashboard.css";
 
 function StudentDashboard() {
+
+  const [quiz, setQuiz] = useState([]);
+  const [answers, setAnswers] = useState({});
+  const [score, setScore] = useState(null);
+
+  // ✅ LOAD quiz from localStorage
+  useEffect(() => {
+    const storedQuiz = JSON.parse(localStorage.getItem("quiz"));
+    if (storedQuiz) {
+      setQuiz(storedQuiz);
+    }
+  }, []);
+
+  const handleOptionChange = (qIndex, option) => {
+    setAnswers({
+      ...answers,
+      [qIndex]: option,
+    });
+  };
+
+  const handleSubmit = () => {
+    let total = 0;
+
+    quiz.forEach((q, i) => {
+      if (answers[i] === q.answer) {
+        total++;
+      }
+    });
+
+    setScore(total);
+  };
+
   return (
     <div className="dashboard">
-
-      <div className="sidebar">
-        <h2>SmartClass</h2>
-
-        <ul>
-          <li>Dashboard</li>
-          <li>My Courses</li>
-          <li>Assignments</li>
-          <li>Quizzes</li>
-          <li>Results</li>
-          <li>Logout</li>
-        </ul>
-      </div>
 
       <div className="main-content">
 
         <h1>Student Dashboard</h1>
 
-        <div className="card-container">
+        <div className="dashboard-card">
 
-          <div className="dashboard-card">
-            <h3>My Courses</h3>
-            <p>View all enrolled courses.</p>
-          </div>
+          <h3>Take Quiz</h3>
 
-          <div className="dashboard-card">
-            <h3>Assignments</h3>
-            <p>Upload and track assignments.</p>
-          </div>
+          {quiz.length === 0 ? (
+            <p>No quiz available</p>
+          ) : (
+            quiz.map((q, i) => (
+              <div key={i}>
+                <p><strong>{q.question}</strong></p>
 
-          <div className="dashboard-card">
-            <h3>Quiz Results</h3>
-            <p>Check your quiz scores.</p>
-          </div>
+                {q.options.map((opt, idx) => (
+                  <div key={idx}>
+                    <input
+                      type="radio"
+                      name={`q${i}`}
+                      value={opt}
+                      onChange={() => handleOptionChange(i, opt)}
+                    />
+                    {opt}
+                  </div>
+                ))}
+
+                <br />
+              </div>
+            ))
+          )}
+
+          {quiz.length > 0 && (
+            <button onClick={handleSubmit}>Submit</button>
+          )}
+
+          {score !== null && (
+            <h3>Your Score: {score} / {quiz.length}</h3>
+          )}
 
         </div>
 

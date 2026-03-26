@@ -6,7 +6,7 @@ function Signup() {
     <div className="auth-container">
       <div className="auth-box">
 
-        <h1>SmartClass AI</h1>
+        <h1>CLYDE</h1>
         <h2>Create Account</h2>
 
         <input type="text" placeholder="Full Name" />
