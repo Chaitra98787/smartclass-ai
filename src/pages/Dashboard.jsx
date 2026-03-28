@@ -1,20 +1,23 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 function Dashboard() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
 
-  const today = new Date();
-  const currentDate = today.getDate();
-  const [selectedDate, setSelectedDate] = useState(currentDate);
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("user"));
+    setUser(stored);
+  }, []);
 
-  const daysInMonth = new Date(2026, 2, 0).getDate();
-
-  const classes = {
-    9: ["Class 6th - 10AM", "Class 7th - 3PM"],
-    10: ["Class 5th - 11AM"],
-    11: ["Class 8th - 2PM"],
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    navigate("/login");
   };
 
   return (
@@ -22,95 +25,101 @@ function Dashboard() {
 
       {/* SIDEBAR */}
       <div className="sidebar">
-        <h2>SmartClass</h2>
+        <h2>CLYDE</h2>
 
         <ul>
-          <li className="active">Dashboard</li>
-          <li onClick={() => navigate("/upload-notes")}>Upload Notes</li>
-          <li onClick={() => navigate("/quiz-generator")}>AI Quiz</li>
-          <li>Analytics</li>
+          <li onClick={() => navigate("/upload-notes")}>Upload</li>
+          <li onClick={() => navigate("/quiz-generator")}>Quiz</li>
+          <li onClick={() => navigate("/results")}>Results</li>
         </ul>
+
+        <button onClick={handleLogout}>Logout</button>
       </div>
 
       {/* MAIN */}
       <div className="main">
 
-        <h2>Good Morning, Teacher 👋</h2>
-
+        {/* BANNER */}
         <div className="banner">
-          Your students are doing great 🎉 60% completed tests
+          <div>
+            <h2>Good Morning 👋</h2>
+            <p>{user?.email}</p>
+          </div>
+          <div className="badge">Teacher Panel</div>
         </div>
 
-        <div className="content">
+        {/* STATS */}
+        <div className="stats">
+          <div className="card">
+            <h1>12</h1>
+            <p>Quizzes</p>
+          </div>
+
+          <div className="card">
+            <h1>5</h1>
+            <p>Notes</p>
+          </div>
+
+          <div className="card">
+            <h1>24</h1>
+            <p>Students</p>
+          </div>
+        </div>
+
+        {/* GRID */}
+        <div className="grid">
 
           {/* LEFT */}
-          <div className="left">
-            <div className="card">
-              <h3>Submitted Tests</h3>
+          <div className="big-card">
+            <h3>Quick Actions</h3>
 
-              <table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
+            <div className="actions">
+              <div onClick={() => navigate("/upload-notes")}>
+                Upload Notes
+              </div>
 
-                <tbody>
-                  <tr>
-                    <td>John</td>
-                    <td>Today</td>
-                    <td className="active-status">Active</td>
-                  </tr>
+              <div onClick={() => navigate("/quiz-generator")}>
+                Create Quiz
+              </div>
 
-                  <tr>
-                    <td>Emma</td>
-                    <td>Yesterday</td>
-                    <td className="completed">Completed</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div onClick={() => navigate("/results")}>
+                View Results
+              </div>
             </div>
           </div>
 
-          {/* RIGHT PANEL */}
-          <div className="right-panel">
+          {/* MIDDLE - ANALYTICS */}
+          <div className="side-card">
 
-            <div className="profile">
-              <h3>Monica</h3>
-              <p>Math Teacher</p>
+            <h3>Today's Progress</h3>
+
+            <div className="progress-box">
+              <CircularProgressbar value={75} text={`75%`} />
             </div>
 
-            <div className="calendar-box">
-              <h4>March 2026</h4>
+            <p className="progress-text">
+              75% tasks completed
+            </p>
 
-              <div className="calendar">
-                {[...Array(daysInMonth)].map((_, i) => {
-                  const day = i + 1;
-                  return (
-                    <span
-                      key={day}
-                      className={day === selectedDate ? "active-date" : ""}
-                      onClick={() => setSelectedDate(day)}
-                    >
-                      {day}
-                    </span>
-                  );
-                })}
-              </div>
+            <div className="mini-stats">
+              <p>✔ 2 Quizzes</p>
+              <p>✔ 3 Notes</p>
+              <p>✔ 10 Students</p>
             </div>
 
-            <div className="schedule">
-              <h4>Schedule</h4>
+          </div>
 
-              {classes[selectedDate] ? (
-                classes[selectedDate].map((cls, i) => (
-                  <p key={i}>{cls}</p>
-                ))
-              ) : (
-                <p>No classes</p>
-              )}
+          {/* RIGHT - CALENDAR */}
+          <div className="calendar-card">
+
+            <h3>Schedule</h3>
+
+            <Calendar className="calendar" />
+
+            <div className="events">
+              <p>📌 Parent Meeting - 10 AM</p>
+              <p>📌 Quiz Review - 1 PM</p>
+              <p>📌 Staff Meeting - 3 PM</p>
             </div>
 
           </div>
@@ -118,7 +127,6 @@ function Dashboard() {
         </div>
 
       </div>
-
     </div>
   );
 }

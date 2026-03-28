@@ -1,0 +1,16 @@
+.notes {
+  margin-top: 20px;
+}
+
+.note {
+  display: flex;
+  justify-content: space-between;
+  background: #14213D;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.note h3 {
+  color: #FCA311;
+}

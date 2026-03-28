@@ -1,87 +1,60 @@
-import { useState, useEffect } from "react";
-import "./Dashboard.css";
+import StudentLayout from "./StudentLayout";
+import "./StudentDashboard.css";
 
 function StudentDashboard() {
-
-  const [quiz, setQuiz] = useState([]);
-  const [answers, setAnswers] = useState({});
-  const [score, setScore] = useState(null);
-
-  // ✅ LOAD quiz from localStorage
-  useEffect(() => {
-    const storedQuiz = JSON.parse(localStorage.getItem("quiz"));
-    if (storedQuiz) {
-      setQuiz(storedQuiz);
-    }
-  }, []);
-
-  const handleOptionChange = (qIndex, option) => {
-    setAnswers({
-      ...answers,
-      [qIndex]: option,
-    });
-  };
-
-  const handleSubmit = () => {
-    let total = 0;
-
-    quiz.forEach((q, i) => {
-      if (answers[i] === q.answer) {
-        total++;
-      }
-    });
-
-    setScore(total);
-  };
-
   return (
-    <div className="dashboard">
+    <StudentLayout>
 
-      <div className="main-content">
+      {/* HEADER */}
+      <div className="top-bar">
+        <div>
+          <h2>Welcome back</h2>
+          <p>Let's keep your progress going</p>
+        </div>
 
-        <h1>Student Dashboard</h1>
+        <button className="quiz-btn">
+          Go to Quiz →
+        </button>
+      </div>
 
-        <div className="dashboard-card">
+      {/* STATS */}
+      <div className="stats">
 
-          <h3>Take Quiz</h3>
+        <div className="stat-card">
+          <p>Pending</p>
+          <h3>2 Quizzes</h3>
+        </div>
 
-          {quiz.length === 0 ? (
-            <p>No quiz available</p>
-          ) : (
-            quiz.map((q, i) => (
-              <div key={i}>
-                <p><strong>{q.question}</strong></p>
+        <div className="stat-card active">
+          <p>Performance</p>
+          <h3>82%</h3>
+        </div>
 
-                {q.options.map((opt, idx) => (
-                  <div key={idx}>
-                    <input
-                      type="radio"
-                      name={`q${i}`}
-                      value={opt}
-                      onChange={() => handleOptionChange(i, opt)}
-                    />
-                    {opt}
-                  </div>
-                ))}
-
-                <br />
-              </div>
-            ))
-          )}
-
-          {quiz.length > 0 && (
-            <button onClick={handleSubmit}>Submit</button>
-          )}
-
-          {score !== null && (
-            <h3>Your Score: {score} / {quiz.length}</h3>
-          )}
-
+        <div className="stat-card">
+          <p>Completion</p>
+          <h3>75%</h3>
         </div>
 
       </div>
 
-    </div>
+      {/* ACTIVITY */}
+      <div className="activity">
+
+        <h3>Recent Activity</h3>
+
+        <div className="activity-item">
+          <span>Math Quiz Assigned</span>
+          <span className="time">Due tomorrow</span>
+        </div>
+
+        <div className="activity-item">
+          <span>English Assignment Submitted</span>
+          <span className="time">Yesterday</span>
+        </div>
+
+      </div>
+
+    </StudentLayout>
   );
 }
 

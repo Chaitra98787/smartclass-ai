@@ -1,69 +1,36 @@
-import { Link } from "react-router-dom";
-import "../App.css";
-import bg from "../assets/bg.png";
+import "./Home.css";
+import { useNavigate } from "react-router-dom";
+
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
-    <div>
+    <div
+      className="home"
+      style={{ backgroundImage: "url('/reva.avif')" }}
+    >
 
       {/* NAVBAR */}
-      <nav className="navbar">
+      <div className="navbar">
         <h2 className="logo">CLYDE</h2>
 
         <div className="nav-links">
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link> {/* ✅ FIXED */}
+          <button onClick={() => navigate("/")}>Home</button>
+          <button onClick={() => navigate("/login")}>Login</button>
+          <button onClick={() => navigate("/signup")}>Signup</button>
         </div>
-      </nav>
+      </div>
 
       {/* HERO */}
-      <section
-        className="hero"
-        style={{
-          backgroundImage: `url(${bg})`,
-        }}
-      >
-        <div className="hero-content">
-          <h1>CLYDE Classroom Management System</h1>
+      <div className="overlay">
+        <h1>CLYDE Classroom</h1>
+        <h1 className="highlight">Management System</h1>
 
-          <p>
-            AI-powered platform that automates quizzes, tracks student engagement,
-            and predicts learning outcomes.
-          </p>
-
-          <Link to="/login">
-            <button className="hero-btn">Get Started</button>
-          </Link>
-        </div>
-      </section>
-
-      {/* FEATURES (UNCHANGED) */}
-      <section className="features">
-        <h2>Powerful Features</h2>
-
-        <div className="feature-container">
-          <div className="feature-card">
-            <h3>🤖 AI Quiz Generator</h3>
-            <p>Upload lecture notes and automatically generate quizzes.</p>
-          </div>
-
-          <div className="feature-card">
-            <h3>📸 Smart Attendance</h3>
-            <p>Automatic attendance using facial recognition technology.</p>
-          </div>
-
-          <div className="feature-card">
-            <h3>📊 Engagement Monitoring</h3>
-            <p>Track student attention and classroom participation.</p>
-          </div>
-
-          <div className="feature-card">
-            <h3>📈 Predictive Analytics</h3>
-            <p>Identify struggling students early using AI insights.</p>
-          </div>
-        </div>
-      </section>
+        <button onClick={() => navigate("/login")}>
+          Get Started
+        </button>
+      </div>
 
     </div>
   );

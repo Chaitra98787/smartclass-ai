@@ -1,45 +1,128 @@
+/* GLOBAL SMOOTHNESS */
+* {
+  transition: all 0.2s ease;
+}
+
+/* PAGE */
 .upload-page {
-  text-align: center;
+  display: flex;
+  gap: 30px;
   padding: 40px;
+  background: #0d1b2a;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* CARDS */
+.upload-card,
+.notes-card {
+  background: #14213D;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* TITLE */
-.upload-page h2 {
-  font-size: 28px;
-  margin-bottom: 30px;
+.upload-card h2,
+.notes-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
 }
 
-/* CARD CONTAINER */
-.card-container {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+/* INPUTS */
+.upload-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  background: #0d1b2a;
+  color: white;
 }
 
-/* 🔥 YELLOW CARDS */
-.class-card {
-  background: #FCA311; /* ✅ YELLOW */
+.upload-card input:focus {
+  outline: 1px solid #FCA311;
+}
 
-  width: 220px;
-  height: 130px;
-
-  border-radius: 15px;
+/* FILE BOX */
+.file-box {
+  border: 2px dashed #FCA311;
+  padding: 20px;
+  text-align: center;
   cursor: pointer;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  color: #14213D; /* 🔥 DARK TEXT FOR CONTRAST */
-
-  font-weight: bold;
-  transition: 0.3s;
+  border-radius: 10px;
+  margin: 10px 0;
+  font-size: 14px;
+  color: #ccc;
 }
 
-/* HOVER EFFECT */
-.class-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+.file-box:hover {
+  background: rgba(252,163,17,0.1);
+}
+
+/* BUTTON */
+.upload-card button {
+  width: 100%;
+  padding: 12px;
+  background: #FCA311;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.upload-card button:hover {
+  background: #ffba08;
+  transform: scale(1.03);
+}
+
+/* NOTES CARD */
+.notes-card {
+  flex: 1;
+}
+
+/* NOTE ITEM */
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0d1b2a;
+  padding: 14px 16px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.note-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* TEXT */
+.note-left h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.note-left p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* BUTTON */
+.view-btn {
+  background: #FCA311;
+  color: black;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.view-btn:hover {
+  background: #ffba08;
+  transform: scale(1.05);
 }

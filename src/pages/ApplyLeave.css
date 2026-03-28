@@ -1,0 +1,90 @@
+.leave-page {
+  background: #14213D; /* 🔥 deep blue */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Inter, sans-serif;
+  color: #e5e5e5;
+}
+
+.leave-container {
+  width: 420px;
+  background: #0d1b2a;
+  padding: 30px;
+  border-radius: 18px;
+  border: 1px solid #1b263b;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* HEADER */
+.leave-header h2 {
+  font-size: 24px;
+  color: #FCA311; /* 🔥 yellow accent */
+}
+
+.leave-header p {
+  color: #adb5bd;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+.leave-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.leave-form input,
+.leave-form select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #1b263b;
+  background: #14213D;
+  color: white;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+/* 🔥 FOCUS = YELLOW */
+.leave-form input:focus,
+.leave-form select:focus {
+  outline: none;
+  border-color: #FCA311;
+  box-shadow: 0 0 0 1px #FCA311;
+}
+
+/* DATE */
+.date-row {
+  display: flex;
+  gap: 12px;
+}
+
+.date-row div {
+  flex: 1;
+}
+
+label {
+  font-size: 12px;
+  color: #adb5bd;
+}
+
+/* BUTTON */
+.leave-form button {
+  margin-top: 10px;
+  padding: 13px;
+  background: #FCA311; /* 🔥 main yellow */
+  border: none;
+  border-radius: 12px;
+  color: black;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.leave-form button:hover {
+  background: #ffba08;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(252, 163, 17, 0.4);
+}

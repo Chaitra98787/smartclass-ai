@@ -1,29 +1,71 @@
-import { Link } from "react-router-dom";
-import "./Auth.css";
+import "./Signup.css";
+import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
+  const navigate = useNavigate();
+
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    role: "Student"
+  });
+
+  const handleSignup = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/signup",
+        data
+      );
+
+      alert("Signup successful ✅");
+      navigate("/login");
+
+    } catch (err) {
+      console.log(err);
+      alert("Signup failed ❌");
+    }
+  };
+
   return (
-    <div className="auth-container">
-      <div className="auth-box">
+    <div className="signup-page">
+      <div className="signup-card">
 
         <h1>CLYDE</h1>
-        <h2>Create Account</h2>
+        <h3>Create Account</h3>
 
-        <input type="text" placeholder="Full Name" />
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input
+          type="email"
+          placeholder="Email"
+          value={data.email}
+          onChange={(e) =>
+            setData({ ...data, email: e.target.value })
+          }
+        />
 
-        <select>
-          <option>Select Role</option>
-          <option>Teacher</option>
+        <input
+          type="password"
+          placeholder="Password"
+          value={data.password}
+          onChange={(e) =>
+            setData({ ...data, password: e.target.value })
+          }
+        />
+
+        <select
+          value={data.role}
+          onChange={(e) =>
+            setData({ ...data, role: e.target.value })
+          }
+        >
           <option>Student</option>
+          <option>Teacher</option>
         </select>
 
-        <button>Sign Up</button>
-
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
+        <button onClick={handleSignup}>
+          Sign Up
+        </button>
 
       </div>
     </div>

@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #0d1b2a;
+  color: white;
+}
+
+/* CONTAINER */
+.quiz-container {
+  width: 420px;
+  margin: auto;
+  margin-top: 80px;
+  background: #14213D;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+/* TITLE */
+.quiz-container h2 {
+  margin-bottom: 20px;
+}
+
+/* UPLOAD BOX */
+.upload-box {
+  border: 2px dashed #FCA311;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: #0d1b2a;
+}
+
+.file-label {
+  background: #FCA311;
+  color: black;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.upload-box p {
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* INPUTS */
+.input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  background: #0d1b2a;
+  color: white;
+}
+
+/* DATE + TIME SIDE BY SIDE */
+.datetime {
+  display: flex;
+  gap: 10px;
+}
+
+.datetime .input {
+  flex: 1;
+}
+
+/* FIX INPUT COLORS */
+input[type="date"],
+input[type="time"] {
+  color-scheme: dark;
+}
+
+/* BUTTON */
+.upload-btn {
+  width: 100%;
+  padding: 12px;
+  background: #FCA311;
+  color: black;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  background: #ffba08;
+}

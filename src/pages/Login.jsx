@@ -1,41 +1,53 @@
-import "./Login.css";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const [role, setRole] = useState("Student");
+  const handleLogin = async () => {
+    try {
+      const res = await axios.post("http://localhost:5000/login", {
+        email: email.trim(),
+        password: password.trim(),
+      });
 
-  const handleLogin = () => {
-    if (role === "Teacher") {
-      navigate("/teacher-dashboard"); // ✅ GO TO TEACHER DASHBOARD
-    } else {
-      navigate("/student-dashboard"); // (optional)
+      console.log("RESPONSE:", res.data);
+
+      if (res.data.role === "teacher") {
+        navigate("/teacher-dashboard");
+      } else if (res.data.role === "student") {
+        navigate("/student-dashboard");
+      } else {
+        alert("Role missing ❌");
+      }
+
+    } catch (err) {
+      alert("Invalid credentials ❌");
     }
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
+    <div>
+      <h2>Login</h2>
 
-        <h1>EduGen AI</h1>
-        <h2>Login</h2>
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
-        <input type="email" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-        <select onChange={(e) => setRole(e.target.value)}>
-          <option>Student</option>
-          <option>Teacher</option>
-        </select>
-
-        {/* ✅ FIXED BUTTON */}
-        <button onClick={handleLogin}>Login</button>
-
-      </div>
+      <button onClick={handleLogin}>Login</button>
     </div>
   );
 }
 
-export default Login;
+export default Login; // 🚨 THIS LINE FIXES YOUR ERROR
